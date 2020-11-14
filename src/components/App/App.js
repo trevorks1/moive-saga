@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+import Home from './App/Home';
 
 // Use of redux
 import { connect } from 'react-redux';
@@ -11,7 +12,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Movies!</h1>
-        <Router>{/* ADD PAGES! */}</Router>
+        <Router>
+          <Route exact path="/" component={Home} />
+        </Router>
         <p>Empty Page</p>
       </div>
     );

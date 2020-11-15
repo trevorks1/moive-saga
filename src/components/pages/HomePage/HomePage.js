@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../../MovieItem/MovieItem';
 
+// Making a dispatch call to getMovies SAGA then rendering the moviesArray to the page
 class HomePage extends Component {
   componentDidMount() {
     this.props.dispatch({

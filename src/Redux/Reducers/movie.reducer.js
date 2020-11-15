@@ -1,3 +1,8 @@
+//
+// Movie reducer
+// --------------------------------------
+
+// Set Movies to return action payload
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':

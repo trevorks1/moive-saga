@@ -1,3 +1,8 @@
+//
+// GENRES reducer
+// ---------------------------------------
+
+// Set Genres to return payload
 const genres = (state = [], action) => {
   switch (action.type) {
     case 'SET_GENRES':

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+// MovieItem class Component to get movies and move to details page
 class MovieItem extends Component {
   clickDetails = (event) => {
     this.props.dispatch({

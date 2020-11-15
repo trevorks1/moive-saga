@@ -31,13 +31,13 @@ class DetailsPage extends Component {
           </div>
           <div>
             <p>Title: {movieDetails.title}</p>
-            <ul>Genre: {genreName}</ul>
+            <ul>Genre {genreName}</ul>
             <img alt="movieDetails" src={movieDetails.poster} />
             <p>Description: {movieDetails.description}</p>
           </div>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={this.onBackToList}
           >
             Back to List

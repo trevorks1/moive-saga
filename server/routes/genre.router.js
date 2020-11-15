@@ -1,10 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../modules/pool')
+const pool = require('../modules/pool');
 
-router.get('/', (req, res) => {
-  // Add query to get all genres
-  res.sendStatus(500)
+router.get('/details/:id', (req, res) => {
+  console.log(req.body);
+  pool
+    .query(
+      `SELECT * FROM "movies" 
+    JOIN "movie_genres" ON "movies".id = "movie_genres".movie_id
+    JOIN "genres" ON "movie_genres".genre_id = "genres".id`
+    )
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log('error in getting genres', error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

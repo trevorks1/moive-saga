@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import AddMoviePage from '../../pages/AddMoviesPage/AddMoviePage';
+import AddMoviePage from '../../pages/AddMoviePage/AddMoviePage';
 import DetailsPage from '../../pages/DetailsPage/DetailsPage';
 import HomePage from '../../pages/HomePage/HomePage';
 import './App.css';

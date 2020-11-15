@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 
+// Adding a movie and filtering Genres with a join to Add Movie to the home page and DB
 class AddMoviePage extends Component {
   componentDidMount() {
     this.props.dispatch({
@@ -17,12 +18,14 @@ class AddMoviePage extends Component {
     },
   };
 
+  // When input is altered handle the set of newMovie state and event target
   handleInputChange = (input) => (event) => {
     this.setState({
       newMovie: { ...this.state.newMovie, [input]: event.target.value },
     });
   };
 
+  // Adding new post to db
   addNewMovie = (event) => {
     event.preventDefault();
     this.props.dispatch({
@@ -39,6 +42,7 @@ class AddMoviePage extends Component {
     this.props.history.push('/');
   };
 
+  // Nav back to homepage
   onCancel = (event) => {
     this.props.history.push('/');
   };

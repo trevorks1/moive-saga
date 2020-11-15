@@ -1,29 +1,21 @@
-import React, { Component } from 'react’;
-import { connect } from 'react-redux’;
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import MovieItem from '../../components/MovieItem/MovieItem';
 
-class Home extends Component {
+class HomePage extends Component {
   componentDidMount() {
     this.props.dispatch({
       type: 'GET_MOVIES',
     });
   }
 
-  handleClick = (event) => {
-    this.props.history.push('/details');
+  handlePosterClick = (event) => {
+    this.props.history.push('/details/');
   };
 
   render() {
     const moviesArray = this.props.reduxState.movies.map((item, index) => {
-      return (
-        <div>
-          <div key={item.id}></div>
-          <div>{item.title}</div>
-          <div>
-            <img src={item.poster} onClick={this.handleClick} />
-          </div>
-          <div>{item.description}</div>
-        </div>
-      );
+      return <MovieItem key={index} movies={item} />;
     });
     return (
       <div>
@@ -32,9 +24,8 @@ class Home extends Component {
     );
   }
 }
-
 const mapStateToProps = (reduxState) => ({
   reduxState,
 });
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(HomePage);

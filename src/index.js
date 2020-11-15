@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 import './index.css';
 import App from './components/App/App.js';
 import registerServiceWorker from './registerServiceWorker';
@@ -10,22 +9,49 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovies);
+  yield takeLatest('GET_DETAILS', getDetails);
+  yield takeLatest('POST_MOVIE', postNewMovie);
 }
 
-// Get Movies
 function* getMovies(action) {
-  console.log('Receiving data. ');
   try {
     const response = yield axios.get('/api/movie');
     console.log(response.data);
     yield put({
       type: 'SET_MOVIES',
       payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* getDetails(action) {
+  console.log('HELLO');
+  try {
+    const response = yield axios.get(`/api/genre/details/${action.payload}`);
+    console.log(response.data);
+    yield put({
+      type: 'SET_DETAILS',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* postNewMovie(action) {
+  try {
+    yield axios.post('/api/movie', action.payload);
+    console.log(response.data);
+    yield put({
+      type: 'GET_MOVIES',
     });
   } catch (err) {
     console.log(err);
@@ -55,11 +81,21 @@ const genres = (state = [], action) => {
   }
 };
 
+const movieDetails = (state = {}, action) => {
+  switch (action.type) {
+    case 'SET_DETAILS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // Create one store that all components can use
 const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    movieDetails,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)

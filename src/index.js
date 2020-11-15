@@ -17,6 +17,7 @@ function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovies);
   yield takeLatest('GET_DETAILS', getDetails);
   yield takeLatest('POST_MOVIE', postNewMovie);
+  yield takeLatest('GET_GENRES', getGenres);
 }
 
 function* getMovies(action) {
@@ -25,6 +26,19 @@ function* getMovies(action) {
     console.log(response.data);
     yield put({
       type: 'SET_MOVIES',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* getGenres(action) {
+  try {
+    const response = yield axios.get(`/api/genre`);
+    console.log(response.data);
+    yield put({
+      type: 'SET_GENRES',
       payload: response.data,
     });
   } catch (err) {
@@ -84,7 +98,7 @@ const genres = (state = [], action) => {
   }
 };
 
-const movieDetails = (state = {}, action) => {
+const movieDetails = (state = { genres: [] }, action) => {
   switch (action.type) {
     case 'SET_DETAILS':
       return action.payload;

@@ -18,6 +18,9 @@ class DetailsPage extends Component {
 
   render() {
     const { movieDetails } = this.props.reduxState;
+    const genreName = movieDetails.genres.map((item, index) => {
+      return <li key={index}>{item.name}</li>;
+    });
     return (
       <div>
         <div>
@@ -26,7 +29,7 @@ class DetailsPage extends Component {
           </div>
           <div>
             <p>Title: {movieDetails.title}</p>
-            <p>Genre: {movieDetails.name}</p>
+            <ul>Genre: {genreName}</ul>
             <img alt="movieDetails" src={movieDetails.poster} />
             <p>Description: {movieDetails.description}</p>
           </div>

@@ -9,10 +9,6 @@ class HomePage extends Component {
     });
   }
 
-  handlePosterClick = (event) => {
-    this.props.history.push('/details/');
-  };
-
   render() {
     const moviesArray = this.props.reduxState.movies.map((item, index) => {
       return <MovieItem key={index} movies={item} />;

@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 
 class AddMoviePage extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_GENRES',
+    });
+  }
+
   state = {
     newMovie: {
       title: '',
@@ -13,8 +19,7 @@ class AddMoviePage extends Component {
 
   handleInputChange = (input) => (event) => {
     this.setState({
-      ...this.state.newMovie,
-      [input]: event.target.value,
+      newMovie: { ...this.state.newMovie, [input]: event.target.value },
     });
   };
 
@@ -38,6 +43,13 @@ class AddMoviePage extends Component {
   };
 
   render() {
+    const genreArray = this.props.reduxState.genres.map((item, index) => {
+      return (
+        <option key={index} value={item.id}>
+          {item.name}
+        </option>
+      );
+    });
     return (
       <div>
         <div>
@@ -63,19 +75,7 @@ class AddMoviePage extends Component {
             value={this.state.input}
             onChange={this.handleInputChange('genre_id')}
           >
-            <option value="adventure">Adventure</option>
-            <option value="animated">Animated</option>
-            <option value="biographical">Biographical</option>
-            <option value="comedy">Comedy</option>
-            <option value="disaster">Disaster</option>
-            <option value="Drama">Drama</option>
-            <option value="epic">Epic</option>
-            <option value="fantasy">Fanstasy</option>
-            <option value="musical">Musical</option>
-            <option value="romantic">Romantic</option>
-            <option value="science fiction">Science Fiction</option>
-            <option value="space-opera">Space-Opera</option>
-            <option value="superhero">Superhero</option>
+            {genreArray}
           </select>
         </div>
         <div>

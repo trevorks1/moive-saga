@@ -20,8 +20,8 @@ router.get('/details/:id', (req, res) => {
   pool
     .query(
       `SELECT "genres".* FROM "movies" 
-    JOIN "movie_genres" ON "movies".id = "movie_genres".movie_id
-    JOIN "genres" ON "movie_genres".genre_id = "genres".id WHERE "movies".id = $1`,
+    JOIN "movie_genre" ON "movies".id = "movie_genre".movies_id
+    JOIN "genres" ON "movie_genre".genres_id = "genres".id WHERE "movies".id = $1`,
       [req.params.id]
     )
     .then((result) => {

@@ -20,6 +20,7 @@ function* rootSaga() {
   yield takeLatest('GET_GENRES', getGenres);
 }
 
+// SAGA to get movies
 function* getMovies(action) {
   try {
     const response = yield axios.get('/api/movie');
@@ -33,6 +34,7 @@ function* getMovies(action) {
   }
 }
 
+// SAGA to get genres
 function* getGenres(action) {
   try {
     const response = yield axios.get(`/api/genre`);
@@ -46,6 +48,7 @@ function* getGenres(action) {
   }
 }
 
+// SAGA to get details
 function* getDetails(action) {
   console.log('HELLO');
   try {
@@ -63,6 +66,7 @@ function* getDetails(action) {
   }
 }
 
+// SAGA to post new movies in db
 function* postNewMovie(action) {
   try {
     const response = yield axios.post('/api/movie', action.payload);
@@ -98,6 +102,7 @@ const genres = (state = [], action) => {
   }
 };
 
+// Reducer for Movie details
 const movieDetails = (state = { genres: [] }, action) => {
   switch (action.type) {
     case 'SET_DETAILS':

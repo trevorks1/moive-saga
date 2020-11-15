@@ -36,6 +36,7 @@ class AddMoviePage extends Component {
         description: '',
       },
     });
+    this.props.history.push('/');
   };
 
   onCancel = (event) => {

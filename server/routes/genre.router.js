@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+// a get request to get Genres from db to homepage
 router.get('/', (req, res) => {
   console.log(req.body);
   pool
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// another GET to get details and id from db with joins to get movies details and genres
 router.get('/details/:id', (req, res) => {
   console.log(req.body);
   pool

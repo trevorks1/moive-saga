@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+// GET request for movies from db
 router.get('/', (req, res) => {
   console.log(req.body);
   pool
@@ -13,6 +14,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// Post made to the db from the src
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie

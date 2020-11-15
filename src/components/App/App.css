@@ -1,16 +1,30 @@
 .App {
   text-align: center;
+  font-size: larger;
+  color: rgb(2, 2, 2);
 }
 
 .App-header {
-  background-color: rgb(153, 33, 24);
+  background-color: rgb(154, 4, 173);
   height: 150px;
   padding: 20px;
-  color: rgb(255, 255, 255);
+  color: rgb(104, 255, 4);
+  border: solid black;
+  text-shadow: 2px 2px black;
+  font-size: 40px;
 }
 
 .App-title {
   font-size: 1.5em;
+  color: rgb(94, 255, 1);
+}
+
+.App-homepage {
+  color: red;
+}
+
+.Add-movie-page {
+  padding: 20px;
 }
 
 .App-intro {

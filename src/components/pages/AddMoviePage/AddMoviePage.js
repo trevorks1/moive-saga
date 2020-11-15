@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 
 // Adding a movie and filtering Genres with a join to Add Movie to the home page and DB
 class AddMoviePage extends Component {
@@ -57,31 +57,38 @@ class AddMoviePage extends Component {
     });
     return (
       <div>
-        <div>
-          <input
-            type="text"
-            placeholder="Movie Title"
-            name="title"
-            onChange={this.handleInputChange('title')}
-          ></input>
-          <input
-            type="text"
-            placeholder="Poster URL"
-            name="image"
-            onChange={this.handleInputChange('poster')}
-          ></input>
-          <input
-            type="text"
-            placeholder="Description"
-            name="description"
-            onChange={this.handleInputChange('description')}
-          ></input>
-          <select
-            value={this.state.input}
-            onChange={this.handleInputChange('genre_id')}
+        <div className="Add-movie-page">
+          <Grid
+            container
+            direction="row"
+            justify="space-around"
+            alignItems="baseline"
           >
-            {genreArray}
-          </select>
+            <input
+              type="text"
+              placeholder="Movie Title"
+              name="title"
+              onChange={this.handleInputChange('title')}
+            ></input>
+            <input
+              type="text"
+              placeholder="Poster URL"
+              name="image"
+              onChange={this.handleInputChange('poster')}
+            ></input>
+            <input
+              type="text"
+              placeholder="Description"
+              name="description"
+              onChange={this.handleInputChange('description')}
+            ></input>
+            <select
+              value={this.state.input}
+              onChange={this.handleInputChange('genre_id')}
+            >
+              {genreArray}
+            </select>
+          </Grid>
         </div>
         <div>
           <Button
@@ -92,7 +99,11 @@ class AddMoviePage extends Component {
             Save
           </Button>
           <div>
-            <Button onClick={this.onCancel} variant="contained" color="primary">
+            <Button
+              onClick={this.onCancel}
+              variant="contained"
+              color="secondary"
+            >
               Cancel
             </Button>
           </div>

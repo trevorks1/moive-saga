@@ -27,7 +27,7 @@ class DetailsPage extends Component {
           <div>
             <p>Title: {movieDetails.title}</p>
             <p>Genre: {movieDetails.name}</p>
-            <img src={movieDetails.poster} />
+            <img alt="movieDetails" src={movieDetails.poster} />
             <p>Description: {movieDetails.description}</p>
           </div>
           <Button

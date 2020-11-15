@@ -17,7 +17,11 @@ class MovieItem extends Component {
         <div key={this.props.movies.id}></div>
         <div>{this.props.movies.title}</div>
         <div>
-          <img src={this.props.movies.poster} onClick={this.clickDetails} />
+          <img
+            alt="moviePoster"
+            src={this.props.movies.poster}
+            onClick={this.clickDetails}
+          />
         </div>
         <div>{this.props.movies.description}</div>
       </div>

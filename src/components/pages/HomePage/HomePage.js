@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MovieItem from '../../components/MovieItem/MovieItem';
+import MovieItem from '../../MovieItem/MovieItem';
 
 class HomePage extends Component {
   componentDidMount() {
